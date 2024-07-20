@@ -1,23 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const animal = document.getElementById('animal');
+    const maxX = window.innerWidth - 50;
+    const maxY = window.innerHeight - 50;
+    const speed = 2; // Ustaw prędkość poruszania się
 
     function randomPosition() {
-        const x = Math.floor(Math.random() * (window.innerWidth - 50));
-        const y = Math.floor(Math.random() * (window.innerHeight - 50));
-        return { x, y };
+        return {
+            x: Math.floor(Math.random() * maxX),
+            y: Math.floor(Math.random() * maxY)
+        };
     }
 
     function moveAnimal() {
         const { x, y } = randomPosition();
-        animal.style.left = `${x}px`;
-        animal.style.top = `${y}px`;
+        animal.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     function askForPermission() {
-        const userConfirmed = confirm('Czy chcesz przejść do innej zakładki?');
+        const userConfirmed = confirm('Czy chcesz przejść do innej otwartej strony w tej przeglądarce?');
         if (userConfirmed) {
-            // Na potrzeby przykładu, otwórzmy nową stronę w tym samym oknie
-            window.location.href = 'https://example.com';
+            // Otwórz nową stronę w tej samej zakładce
+            window.location.href = 'https://www.youtube.com/';
         }
     }
 
@@ -25,5 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
         askForPermission();
     });
 
-    setInterval(moveAnimal, 1000);
+    setInterval(moveAnimal, 100); // Zmniejszono czas dla płynniejszego ruchu
 });
