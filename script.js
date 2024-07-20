@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             const userConfirmed = confirm('Czy chcesz przejść do innej otwartej strony w tej przeglądarce?');
             if (userConfirmed) {
-                window.location.href = 'https://example.com';
+                window.location.href = 'https://www.youtube.com/';
             }
         }, 3000); // Wyświetl komunikat po 3 sekundach
     }
