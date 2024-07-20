@@ -11,3 +11,8 @@ body {
     cursor: pointer;
     transition: transform 0.1s ease;
 }
+
+#message {
+    font-size: 1rem;
+    display: none;
+}
