@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const animal = document.getElementById('animal');
+    const message = document.getElementById('message');
     const maxX = window.innerWidth - 50;
     const maxY = window.innerHeight - 50;
-    const speed = 2; // Ustaw prędkość poruszania się
+    const speed = 2; // Prędkość poruszania się
 
     function randomPosition() {
         return {
@@ -16,17 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
         animal.style.transform = `translate(${x}px, ${y}px)`;
     }
 
+    function showMessage() {
+        message.style.display = 'block';
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 3000); // Ukryj wiadomość po 3 sekundach
+    }
+
     function askForPermission() {
-        const userConfirmed = confirm('Czy chcesz przejść do innej otwartej strony w tej przeglądarce?');
-        if (userConfirmed) {
-            // Otwórz nową stronę w tej samej zakładce
-            window.location.href = 'https://www.youtube.com/';
-        }
+        showMessage();
+        setTimeout(() => {
+            const userConfirmed = confirm('Czy chcesz przejść do innej otwartej strony w tej przeglądarce?');
+            if (userConfirmed) {
+                window.location.href = 'https://example.com';
+            }
+        }, 3000); // Wyświetl komunikat po 3 sekundach
     }
 
     animal.addEventListener('click', () => {
         askForPermission();
     });
 
-    setInterval(moveAnimal, 100); // Zmniejszono czas dla płynniejszego ruchu
+    setInterval(moveAnimal, 100); // Płynniejsze ruchy
+    setInterval(() => {
+        askForPermission();
+    }, 10000); // Wyświetlaj komunikaty co 10 sekund
 });
